@@ -1,7 +1,7 @@
-College Helpr
+College Trackr
 
 # Description
-College Helpr is an app designed to allow parents and students to track their college admissions process.
+College Trackr is an app designed to allow parents and students to track their college admissions process.
 Parents and Students can save the colleges they've selected, track the college admissions applications that have been submitted or being worked on, select from tasks they must complete, and setup sticky notes to themselves to track things that must get completed for each college.  Ideally it can be used hand in hand with a Students School Naviance account and for a parent to make sure they track all the items that need to get done and create their own notes in their home.
 
 
