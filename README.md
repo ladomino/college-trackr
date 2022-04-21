@@ -52,12 +52,13 @@ Parents and Students can save the colleges they've selected, track the college a
 # Wire Frames
 
 ## Home
-![Home]()
+![Home](assets/home.png)
 
 ## Signup/Login
+![Login](assets/signupandlogin.png)
 
 ## CollegeTrackr
-![CollegeTrackr]()
+![Index](assets/index.png)
 
 # ERD
 ![ERD](assets/collegetrackr_erd.png)
