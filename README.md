@@ -36,11 +36,16 @@ Parents and Students can save the colleges they've selected, track the college a
 - As a user, I want to be able to:
 
 - Create a personalized account
-- Save and View specific colleges I have an interest in
-- Add specific colleges if they are not available
-- List all applications that are submitted to colleges
-- Add/Delete/Edit and View an application to a colleges
-- Add/Delete/Edit and View specifc tasks for a college.
+
+- Colletes:  List all colleges that a user is able to Track.
+- Colleges:  Save and View specific colleges that are Tracked.
+- Colleges:  Add a colleges if it is not available in the list of colleges for Tracking.
+
+- Applications: Add/Delete/Edit and View an application to a colleges
+- Applications: List all applications that are submitted to colleges
+
+- Tasks:  List all Tasks for an application that were added.
+- Tasks:  Add/Delete/Edit and View specifc tasks for a college.
 
 # Admin Stories
 - As an Admin,  I want to be able to:
@@ -60,6 +65,11 @@ Parents and Students can save the colleges they've selected, track the college a
 - Django
 - Python
 - SQL (PostgreSQL)
+
+# Full CRUD
+
+- As a User, Full CRUD for Applications and Tasks
+- As an Administrator,  FULL CRUD for Colleges, Applications, Tasks
 
 # Wire Frames
 
