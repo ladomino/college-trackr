@@ -69,10 +69,10 @@ Parents and Students can save the colleges they've selected, track the college a
 ## Signup/Login
 ![Login](assets/signupandlogin.png)
 
-## Track Colleges
+## Track Your Colleges
 ![TrackColleges](assets/trackcolleges.png)
 
-## CollegeTrackr
+## College Tracking List
 ![Index](assets/index.png)
 
 ## New Application
@@ -81,7 +81,7 @@ Parents and Students can save the colleges they've selected, track the college a
 ## College Tracking Full Details
 ![TrackCollegeDetails](assets/collegetrackingdetails.png)
 
-## View Application
+## View Applications 
 ![ViewApp](assets/viewapplications.png)
 
 # ERD
