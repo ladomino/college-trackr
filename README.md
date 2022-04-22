@@ -84,6 +84,9 @@ Parents and Students can save the colleges they've selected, track the college a
 ## View Applications 
 ![ViewApp](assets/viewapplications.png)
 
+# Tasks
+![ViewTasks](assets/tasks.png)
+
 # ERD
 ![ERD](assets/collegetrackr_erd.png)
 
