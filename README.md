@@ -7,19 +7,21 @@ Parents and Students can save the colleges they've selected, track the college a
 
 # MVP Goals
 - Create a profile - signup/login
-- Select Colleges you are interesting in applying to.
-- Add a College/School/Bootcamp you are interested in applying to.
-- View your Colleges you are interested in applying to.
-- Show the College you are interested in applying to.
+- Select Colleges you are interesting in applying to and tracking.
+- Add a College/School/Bootcamp you are interested in applying to if it does not exist.
+- View your Colleges you are tracking.
+- Show a specific College you are interested in applying to.
 - Add an Application to a College you are applying to.
+- View an Application to a College you are applying to.
 - Edit an Application to a College you are applying to.
 - Delete an Application to a College you are no longer interested in applying to.
 - View all Applications to all Colleges you are applying or have applied to.
 - View all Tasks you can add for an Application.
-- Add a Task you need for an Application.
-- Track Tasks you are still working on. Color code them like Sticky Notes.
+- Add Task(s) you need for an Application.
 - Create a Task you need for an Application.
+- Track Tasks via the application/college you are still working on. Color code them like Sticky Notes.
 - Delete a Task you no longer need for an Application.
+- Present a Status of the Application, making sure it is incomplete if mandatory Tasks are not complete.
 
 # Stretch Goals
 - Add in Tracking Sending Scores from standardized tests, transcripts, AP, IB and community
@@ -59,6 +61,12 @@ Parents and Students can save the colleges they've selected, track the college a
 
 ## CollegeTrackr
 ![Index](assets/index.png)
+
+## Track Colleges
+![TrackColleges](assets/trackcolleges.png)
+
+## College Tracking Full Details
+![TrackCollegeDetails](assets/collegetrackingdetails.png)
 
 # ERD
 ![ERD](assets/collegetrackr_erd.png)
