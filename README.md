@@ -50,6 +50,16 @@ Parents and Students can save the colleges they've selected, track the college a
 - Add/Edit/Delete Applications
 - Add/Edit/Delete Tasks
 
+# Front End - Client
+- React
+- Javascript
+- Node
+- Axios
+
+# Back End - API
+- Django
+- Python
+- SQL (PostgreSQL)
 
 # Wire Frames
 
