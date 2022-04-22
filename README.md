@@ -102,6 +102,28 @@ Parents and Students can save the colleges they've selected, track the college a
 
 # Restful Routing API
 
+| METHOD | URL                                      | FUNCTIONALITY           | VIEW               |
+|--------|------------------------------------------|-------------------------|--------------------|
+| GET    | /collegetkr                              | Home page               |                    |
+| GET    | /collegetkr/about                        | About page              |                    |
+| GET    | /collegetkr/colleges                     | Index Colleges          |                    |
+| POST   | /collegetkr/colleges/create              | Create College          |                    |
+| POST   | /collegetkr/colleges/:id/track           | Create CollegeToUser    |                    |
+| DELETE | /collegetkr/colleges/:id/untrack         | Delete CollegeToUser    |                    |
+| GET    | /collegetkr/colleges/:id                 | Display College         |                    |
+| GET    | /collegetkr/apps                         | Index Applications      |                    |
+| POST   | /collegetrk/apps/:collegeid/create       | Create Application      |                    |
+| PATCH  | /collegetrk/apps/:collegeid/edit/:appid  | Edit Application        |                    |
+| DELETE | /collegetrk/apps/:collegeid/delete/:appid| Delete Application      |                    |
+| GET    | /collegetrk/tasks/:appid                 | Display Tasks           |                    |        
+| POST   | /collegetrk/tasks/:appid/create          | Create Task             |                    |
+| PATCH  | /collegetrk/tasks/:appid/edit/:taskid    | Edit Task               |                    |
+| DELETE | /collegetrk/tasks/:appid/delete/:taskid  | Delete Task             |                    |
+| GET    | /signup                                  | Sign up                 | sign_up            |
+| POST   | /signup                                  | Create user             | sign_up            |
+| GET    | /login                                   | Sign in                 | login_view         |
+| POST   | /login                                   | Log in verification     | login_view         |
+| GET    | /logout                                  | Log out                 | logout_view        |
 
 # Home Page
 
