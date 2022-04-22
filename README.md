@@ -112,13 +112,13 @@ Parents and Students can save the colleges they've selected, track the college a
 | DELETE | /collegetkr/colleges/:id/untrack         | Delete CollegeToUser    |                    |
 | GET    | /collegetkr/colleges/:id                 | Display College         |                    |
 | GET    | /collegetkr/apps                         | Index Applications      |                    |
-| POST   | /collegetrk/apps/:collegeid/create       | Create Application      |                    |
-| PATCH  | /collegetrk/apps/:collegeid/edit/:appid  | Edit Application        |                    |
-| DELETE | /collegetrk/apps/:collegeid/delete/:appid| Delete Application      |                    |
-| GET    | /collegetrk/tasks/:appid                 | Display Tasks           |                    |        
-| POST   | /collegetrk/tasks/:appid/create          | Create Task             |                    |
-| PATCH  | /collegetrk/tasks/:appid/edit/:taskid    | Edit Task               |                    |
-| DELETE | /collegetrk/tasks/:appid/delete/:taskid  | Delete Task             |                    |
+| POST   | /collegetkr/apps/:collegeid/create       | Create Application      |                    |
+| PATCH  | /collegetkr/apps/:collegeid/edit/:appid  | Edit Application        |                    |
+| DELETE | /collegetkr/apps/:collegeid/delete/:appid| Delete Application      |                    |
+| GET    | /collegetkr/tasks/:appid                 | Display Tasks           |                    |        
+| POST   | /collegetkr/tasks/:appid/create          | Create Task             |                    |
+| PATCH  | /collegetkr/tasks/:appid/edit/:taskid    | Edit Task               |                    |
+| DELETE | /collegetkr/tasks/:appid/delete/:taskid  | Delete Task             |                    |
 | GET    | /signup                                  | Sign up                 | sign_up            |
 | POST   | /signup                                  | Create user             | sign_up            |
 | GET    | /login                                   | Sign in                 | login_view         |
