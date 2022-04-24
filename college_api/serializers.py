@@ -1,23 +1,55 @@
 from django.contrib.auth import get_user_model
+from college_api.models.applicationtask import ApplicationTask
 from rest_framework import serializers
 
 from .models.application import Application
 from .models.college import College
+from .models.collegeapplication import CollegeApplication
+from .models.trackcollege import TrackCollege
+from .models.task import Task
+from .models.applicationtask import ApplicationTask
 from .models.user import User
 
-class ApplicationSerializer(serializers.ModelSerializer):
+
+class TrackCollegeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Application
-        fields = ('id', 'name', 'link', 'created', 'owner')
+        model = TrackCollege
+        fields = ('id', 'status')
 
 class CollegeSerializer(serializers.ModelSerializer):
+    track_colleges = TrackCollegeSerializer()
     class Meta:
         model = College
         fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
         'app_home_link')
 
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ('id', 'name', 'description', 'mandatory')
+
+
+class CollegeApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CollegeApplication
+        fields = ('id', 'date_submitted', 'in_progress', 'hold', 'early_decision', 'early_action', 'regular_decision')       
+
+class ApplicationTaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApplicationTask
+        fields = ('id', 'importance', 'due_date', 'complete', 'working_on')
+
+class ApplicationSerializer(serializers.ModelSerializer):
+    college_applications = CollegeApplicationSerializer()
+    application_tasks = ApplicationTaskSerializer()
+    class Meta:
+        model = Application
+        fields = ('id', 'name', 'link', 'created', 'owner')
+
 
 class UserSerializer(serializers.ModelSerializer):
+    college_application_owners = ApplicationSerializer(many=True, read_only=False)
+    
     # This model serializer will be used for User creation
     # The login serializer also inherits from this serializer
     # in order to require certain data for login
@@ -53,3 +85,4 @@ class ChangePasswordSerializer(serializers.Serializer):
     model = get_user_model()
     old = serializers.CharField(required=True)
     new = serializers.CharField(required=True)
+

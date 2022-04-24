@@ -18,7 +18,7 @@ class Application(models.Model):
   owner = models.ForeignKey(
       get_user_model(),
       on_delete=models.CASCADE,
-      related_name='college_applications'
+      related_name='college_application_owners'
   )
 
   college_applications = models.ManyToManyField(

@@ -22,7 +22,7 @@ class TrackCollege(models.Model):
         default=TRACK,
     )
 
-    college = models.ForeignKey('College', on_delete=models.CASCADE)
+    college = models.ForeignKey('College', on_delete=models.CASCADE, related_name='college_monitored')
     owner = models.ForeignKey( get_user_model(), on_delete=models.CASCADE,
       related_name='college_tracking'
     )

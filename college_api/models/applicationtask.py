@@ -29,8 +29,8 @@ class ApplicationTask(models.Model):
     complete = models.BooleanField()
     working_on = models.BooleanField()
 
-    application = models.ForeignKey('Application', on_delete=models.CASCADE)
-    task = models.ForeignKey('Task', on_delete=models.CASCADE)
+    application = models.ForeignKey('Application', on_delete=models.CASCADE, related_name='app_tasks')
+    task = models.ForeignKey('Task', on_delete=models.CASCADE, related_name='todo')
 
     def __str__(self):
         return f"Task named {self.task.name} due {self.due_date} for {self.application.name}"

@@ -55,6 +55,7 @@ class UserManager(BaseUserManager):
 
 # Inherit from AbstractBaseUser and PermissionsMixin:
 class User(AbstractBaseUser, PermissionsMixin):
+
     """Database model for users"""
     # As with any Django models, we need to define the fields
     # for the model with the type and options:

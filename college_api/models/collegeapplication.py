@@ -11,8 +11,8 @@ class CollegeApplication(models.Model):
     early_decision = models.BooleanField()
     early_action = models.BooleanField()
     regular_decision = models.BooleanField()
-    college = models.ForeignKey('College', on_delete=models.CASCADE)
-    application = models.ForeignKey('Application', on_delete=models.CASCADE)
+    college = models.ForeignKey('College', on_delete=models.CASCADE, related_name='college_picked')
+    application = models.ForeignKey('Application', on_delete=models.CASCADE, related_name='college_app')
 
     def __str__(self):
         return f"Application named {self.application.name} submitted {self.date_submitted} for {self.name}"
