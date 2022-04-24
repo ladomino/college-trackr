@@ -2,12 +2,20 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from .models.application import Application
+from .models.college import College
 from .models.user import User
 
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = ('id', 'name', 'link', 'created', 'owner')
+
+class CollegeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = College
+        fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
+        'app_home_link')
+
 
 class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation

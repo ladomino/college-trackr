@@ -3,6 +3,12 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models.user import User
 from .models.application import Application
+from .models.college import College
+from .models.trackcollege import TrackCollege
+from .models.collegeapplication import CollegeApplication
+from .models.task import Task
+from .models.applicationtask import ApplicationTask
+
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
@@ -40,3 +46,8 @@ class UserAdmin(BaseUserAdmin):
 # class to format the pages:
 admin.site.register(User, UserAdmin)
 admin.site.register(Application)
+admin.site.register(College)
+admin.site.register(Task)
+admin.site.register(CollegeApplication)
+admin.site.register(TrackCollege)
+admin.site.register(ApplicationTask)
