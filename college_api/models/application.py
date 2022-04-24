@@ -18,7 +18,7 @@ class Application(models.Model):
 
   def __str__(self):
     # This must return a string
-    return f"The application named '{self.name}' was created {self.created} by {self.owner.username}"
+    return f"The application named '{self.name}' was created {self.created} by {self.owner.email}"
 
   def as_dict(self):
     """Returns dictionary version of Application models"""
