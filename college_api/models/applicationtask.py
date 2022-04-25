@@ -26,8 +26,8 @@ class ApplicationTask(models.Model):
     )
 
     due_date = models.DateField()
-    complete = models.BooleanField()
-    working_on = models.BooleanField()
+    complete = models.BooleanField(default=False)
+    working_on = models.BooleanField(default=False)
 
     application = models.ForeignKey('Application', on_delete=models.CASCADE, related_name='app_tasks')
     task = models.ForeignKey('Task', on_delete=models.CASCADE, related_name='todo')

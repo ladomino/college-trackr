@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 class Task(models.Model):
   name = models.CharField(max_length=100)
   description = models.CharField(max_length=256)
+  mandatory = models.BooleanField(default=False)
   created = models.DateTimeField(auto_now_add=True)
   updated = models.DateTimeField(auto_now=True)
 
