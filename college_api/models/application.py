@@ -12,7 +12,7 @@ from .applicationtask import ApplicationTask
 # When a we get the applications via a user they are known as 'college_applications'
 class Application(models.Model):
   name = models.CharField(max_length=100)
-  link = models.URLField()
+  link = models.URLField(blank=True)
   created = models.DateTimeField(auto_now_add=True)
   
   owner = models.ForeignKey(
@@ -34,7 +34,7 @@ class Application(models.Model):
   )
 
   def __str__(self):
-    return f"The application named '{self.name}' was created {self.created} by {self.owner.email}"
+    return f"{self.name} by {self.owner.email}"
 
   def as_dict(self):
     """Returns dictionary version of Application models"""

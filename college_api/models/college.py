@@ -12,11 +12,11 @@ class College(models.Model):
   name = models.CharField(max_length=100)
   city = models.CharField(max_length=100)
   state = models.CharField(max_length=32)
-  image = models.URLField()
-  early_decision = models.DateField()
-  early_action = models.DateField()
-  regular_decision = models.DateField()
-  app_home_link = models.URLField()
+  image = models.URLField(blank=True)
+  early_decision = models.DateField(blank=True)
+  early_action = models.DateField(blank=True)
+  regular_decision = models.DateField(blank=True)
+  app_home_link = models.URLField(blank=True)
 
   track_colleges = models.ManyToManyField(
       settings.AUTH_USER_MODEL,

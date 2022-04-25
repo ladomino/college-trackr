@@ -5,12 +5,12 @@ from django.db import models
 # For a given Application to a College each has a unique date submitted and progress and
 # decision deadline they have applied to.
 class CollegeApplication(models.Model):
-    date_submitted = models.DateField()
-    in_progress = models.BooleanField()
-    hold = models.BooleanField()
-    early_decision = models.BooleanField()
-    early_action = models.BooleanField()
-    regular_decision = models.BooleanField()
+    date_submitted = models.DateField(auto_now=True)
+    in_progress = models.BooleanField(default=True)
+    hold = models.BooleanField(default=False)
+    early_decision = models.BooleanField(default=False)
+    early_action = models.BooleanField(default=False)
+    regular_decision = models.BooleanField(default=True)
     college = models.ForeignKey('College', on_delete=models.CASCADE, related_name='college_picked')
     application = models.ForeignKey('Application', on_delete=models.CASCADE, related_name='college_app')
 
