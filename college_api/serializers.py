@@ -17,11 +17,11 @@ class TrackCollegeSerializer(serializers.ModelSerializer):
         fields = ('id', 'status')
 
 class CollegeSerializer(serializers.ModelSerializer):
-    track_colleges = TrackCollegeSerializer()
+    #track_colleges = TrackCollegeSerializer()
     class Meta:
         model = College
         fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
-        'app_home_link')
+        'app_home_link', 'track_colleges')
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,16 +40,14 @@ class ApplicationTaskSerializer(serializers.ModelSerializer):
         fields = ('id', 'importance', 'due_date', 'complete', 'working_on')
 
 class ApplicationSerializer(serializers.ModelSerializer):
-    college_applications = CollegeApplicationSerializer()
-    application_tasks = ApplicationTaskSerializer()
+    college_applications = CollegeApplicationSerializer(many=True)
+    application_tasks = ApplicationTaskSerializer(many=True)
     class Meta:
         model = Application
-        fields = ('id', 'name', 'link', 'created', 'owner')
+        fields = ('id', 'name', 'link', 'created', 'owner', 'college_applications', 'application_tasks')
 
 
-class UserSerializer(serializers.ModelSerializer):
-    college_application_owners = ApplicationSerializer(many=True, read_only=False)
-    
+class UserSerializer(serializers.ModelSerializer):    
     # This model serializer will be used for User creation
     # The login serializer also inherits from this serializer
     # in order to require certain data for login

@@ -8,32 +8,34 @@ from ..models.application import Application
 from ..serializers import ApplicationSerializer
 
 # Create your views here.
-# class Mangos(generics.ListCreateAPIView):
-#     permission_classes=(IsAuthenticated,)
-#     serializer_class = MangoSerializer
-#     def get(self, request):
-#         """Index request"""
-        # Get all the mangos:
-        # mangos = Mango.objects.all()
-        # Filter the mangos by owner, so you can only see your owned mangos
-        # mangos = Mango.objects.filter(owner=request.user.id)
-        # Run the data through the serializer
-        # data = MangoSerializer(mangos, many=True).data
-        # return Response({ 'mangos': data })
+class ApplicationList(generics.ListCreateAPIView):
+    permission_classes=(IsAuthenticated,)
+    serializer_class = ApplicationSerializer
 
-    # def post(self, request):
-        # """Create request"""
+    def get(self, request):
+        """Index request"""
+        # Get all the applications:
+        # applications = Application.objects.all()
+        # Filter the applications by owner, so you can only see your owned 
+        # applications
+        applications = Application.objects.filter(owner=request.user.id)
+        # Run the data through the serializer
+        data = ApplicationSerializer(applications, many=True).data
+        return Response({ 'applications': data })
+
+    def post(self, request):
+        """Create request"""
         # Add user to request data object
-        # request.data['mango']['owner'] = request.user.id
-        # # Serialize/create mango
-        # mango = MangoSerializer(data=request.data['mango'])
+        request.data['application']['owner'] = request.user.id
+        # Serialize/create mango
+        application = ApplicationSerializer(data=request.data['application'])
         # If the mango data is valid according to our serializer...
-        # if mango.is_valid():
+        if application.is_valid():
             # Save the created mango & send a response
-            # mango.save()
-            # return Response({ 'mango': mango.data }, status=status.HTTP_201_CREATED)
+            application.save()
+            return Response({ 'application': application.data }, status=status.HTTP_201_CREATED)
         # If the data is not valid, return a response with the errors
-#         return Response(mango.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(application.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # class MangoDetail(generics.RetrieveUpdateDestroyAPIView):
 #     permission_classes=(IsAuthenticated,)

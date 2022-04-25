@@ -4,15 +4,29 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 
-from ..models.college import College
+from ..models.college import College as CollegeModel
 from ..serializers import CollegeSerializer
 
-class CollegeList(generics.ListAPIView):
+class CollegeList(generics.ListCreateAPIView):
     
-    permission_classes=(IsAuthenticated,)
+    #permission_classes=(IsAuthenticated,)
     serializer_class = CollegeSerializer
 
     def get(self, request):
-        colleges = College.object.all()
+        colleges = CollegeModel.objects.all()
         data = CollegeSerializer(colleges, many=True).data
         return Response({ 'colleges': data })
+
+    def post(self, request):
+        # """Create request"""
+        # Add user to request data object
+        # request.data['college']['owner'] = request.user.id
+        # # Serialize/create mango
+        college = CollegeSerializer(data=request.data['college'])
+        # If the college data is valid according to our serializer...
+        if college.is_valid():
+            # Save the created college & send a response
+            college.save()
+            return Response({ 'college': college.data }, status=status.HTTP_201_CREATED)
+        # If the data is not valid, return a response with the errors
+        return Response(college.errors, status=status.HTTP_400_BAD_REQUEST)

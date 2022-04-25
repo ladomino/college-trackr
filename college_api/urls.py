@@ -1,16 +1,17 @@
 from django.urls import path
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
 from .views.college_views import CollegeList
+from .views.application_views import ApplicationList
 
 urlpatterns = [
     # path('collegetkr/', views.index, name='index'),
     # path('collegetkr/about/', views.about, name='about'),
 
-    path('collegetkr/colleges/', CollegeList.as_view(), name='colleges_index'),
+    path('collegetkr/colleges/', CollegeList.as_view(), name='college'),
     # path('collegetkr/colleges/<int:college_id>/', views.college_show, name='college_show'),
-    # path('collegetkr/colleges/create/', views.CollegeCreate.as_view(), name='college_create'),
+    path('collegetkr/colleges/create/', CollegeList.as_view(), name='college'),
     # path('collegetkr/user/<username>/', views.profile, name='profile'),
-    # path('collegetkr/apps/', views.apps_index, name='apps_index'),
+    path('collegetkr/apps/', ApplicationList.as_view(), name='apps_index'),
     # path('collegetkr/apps/<int:college_id>', views.apps_detail, name='app_detail'),
     # path('collegetkr/apps/<int:college_id>/create/', views.AppCreate.as_view(), name='app_create'),
     # path('collegetkr/apps/<int:pk>/update/', views.AppUpdate.as_view(), name='app_update'),

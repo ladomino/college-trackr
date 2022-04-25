@@ -15,7 +15,7 @@ class CollegeApplication(models.Model):
     application = models.ForeignKey('Application', on_delete=models.CASCADE, related_name='college_app')
 
     def __str__(self):
-        return f"Application named {self.application.name} submitted {self.date_submitted} for {self.name}"
+        return f"Application named {self.application.name} submitted {self.date_submitted} for {self.application.owner.email}"
 
     def as_dict(self):
         """Returns dictionary version of Application models"""
