@@ -13,6 +13,7 @@ urlpatterns = [
     path('collegetkr/colleges/<int:pk>/', CollegeDetail.as_view(), name='college_detail'),
     path('collegetkr/colleges/create/', CollegeList.as_view(), name='college'),
     path('collegetkr/colleges/<int:college_id>/track/', TrackCollegeList.as_view(), name='college_track'),
+    path('collegetkr/collegetrack/', TrackCollegeList.as_view(), name='college_track_show'),
     path('collegetkr/collegetrack/<int:pk>/', TrackCollegeDetail.as_view(), name='college_track_detail'),
     path('collegetkr/apps/', ApplicationList.as_view(), name='apps_index'),
     # path('collegetkr/apps/<int:college_id>', views.apps_detail, name='app_detail'),

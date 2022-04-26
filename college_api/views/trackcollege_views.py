@@ -14,7 +14,7 @@ class TrackCollegeList(generics.ListCreateAPIView):
     serializer_class = TrackCollegeSerializer
 
     def get(self, request):
-        trackcolleges = TrackCollegeModel.objects.all()
+        trackcolleges = TrackCollegeModel.objects.filter(owner=request.user.id)
         data = TrackCollegeSerializer(trackcolleges, many=True).data
         return Response({ 'trackcolleges': data })
 
