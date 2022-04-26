@@ -22,7 +22,7 @@ class TaskList(generics.ListCreateAPIView):
         # """Create request"""
         # Add user to request data object
         # request.data['college']['owner'] = request.user.id
-        # # Serialize/create mango
+        # # Serialize/create task
         task = TaskSerializer(data=request.data['task'])
         # If the college data is valid according to our serializer...
         if task.is_valid():
@@ -39,9 +39,9 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
         """Show request"""
         # Locate the task to show
         task = get_object_or_404(TaskModel, pk=pk)
-        # Only want to show owned mangos?
+        # Only want to show owned tasks?
         # if request.user != task.owner:
-        #     raise PermissionDenied('Unauthorized, you do not own this mango')
+        #     raise PermissionDenied('Unauthorized, you do not own this task')
 
         # Run the data through the serializer so it's formatted
         data = TaskSerializer(task).data
@@ -51,10 +51,10 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
         """Delete request"""
         # Locate task to delete
         task = get_object_or_404(TaskModel, pk=pk)
-        # Check the mango's owner against the user making this request
-        # if request.user != mango.owner:
-        #     raise PermissionDenied('Unauthorized, you do not own this mango')
-        # Only delete if the user owns the  mango
+        # Check the task's owner against the user making this request
+        # if request.user != task.owner:
+        #     raise PermissionDenied('Unauthorized, you do not own this task')
+        # Only delete if the user owns the  task
         task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -63,9 +63,9 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
         # Locate Task
         # get_object_or_404 returns a object representation of our Task
         task = get_object_or_404(TaskModel, pk=pk)
-        # Check the mango's owner against the user making this request
-        # if request.user != mango.owner:
-        #     raise PermissionDenied('Unauthorized, you do not own this mango')
+        # Check the task's owner against the user making this request
+        # if request.user != task.owner:
+        #     raise PermissionDenied('Unauthorized, you do not own this task')
 
         # Ensure the owner field is set to the current user's ID
         # request.data['task']['owner'] = request.user.id

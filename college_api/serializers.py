@@ -14,7 +14,7 @@ from .models.user import User
 class TrackCollegeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrackCollege
-        fields = ('id', 'status')
+        fields = ('id', 'status', 'college', 'owner')
 
 class CollegeSerializer(serializers.ModelSerializer):
     #track_colleges = TrackCollegeSerializer()

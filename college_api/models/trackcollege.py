@@ -28,7 +28,7 @@ class TrackCollege(models.Model):
     )
 
     def __str__(self):
-        return f"The colled named '{self.college.name}' is being tracked by {self.owner.email}"
+        return f"The college named '{self.college.name}' is being tracked by {self.owner.email}"
 
     def as_dict(self):
         return {

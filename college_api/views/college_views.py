@@ -23,7 +23,7 @@ class CollegeList(generics.ListCreateAPIView):
         # """Create request"""
         # Add user to request data object
         # request.data['college']['owner'] = request.user.id
-        # # Serialize/create mango
+        # # Serialize/create college
         college = CollegeSerializer(data=request.data['college'])
         # If the college data is valid according to our serializer...
         if college.is_valid():
@@ -40,9 +40,9 @@ class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
         """Show request"""
         # Locate the college to show
         college = get_object_or_404(CollegeModel, pk=pk)
-        # Only want to show owned mangos?
-        # if request.user != mango.owner:
-        #     raise PermissionDenied('Unauthorized, you do not own this mango')
+        # Only want to show owned college?
+        # if request.user != college.owner:
+        #     raise PermissionDenied('Unauthorized, you do not own this college')
 
         # Run the data through the serializer so it's formatted
         data = CollegeSerializer(college).data
