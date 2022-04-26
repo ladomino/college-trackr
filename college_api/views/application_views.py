@@ -29,7 +29,7 @@ class ApplicationList(generics.ListCreateAPIView):
         request.data['application']['owner'] = request.user.id
         # Serialize/create mango
         application = ApplicationSerializer(data=request.data['application'])
-        # If the mango data is valid according to our serializer...
+        # If the application data is valid according to our serializer...
         if application.is_valid():
             # Save the created mango & send a response
             application.save()

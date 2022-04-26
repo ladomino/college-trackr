@@ -25,7 +25,7 @@ class ApplicationTask(models.Model):
         default=YELLOW,
     )
 
-    due_date = models.DateField()
+    due_date = models.DateField(blank=True)
     complete = models.BooleanField(default=False)
     working_on = models.BooleanField(default=False)
 

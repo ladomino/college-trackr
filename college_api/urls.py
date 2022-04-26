@@ -1,22 +1,22 @@
 from django.urls import path
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
-from .views.college_views import CollegeList
+from .views.college_views import CollegeList, CollegeDetail
 from .views.application_views import ApplicationList
+from .views.task_views import TaskList
 
 urlpatterns = [
     # path('collegetkr/', views.index, name='index'),
     # path('collegetkr/about/', views.about, name='about'),
 
     path('collegetkr/colleges/', CollegeList.as_view(), name='college'),
-    # path('collegetkr/colleges/<int:college_id>/', views.college_show, name='college_show'),
+    path('collegetkr/colleges/<int:pk>/', CollegeDetail.as_view(), name='college_detail'),
     path('collegetkr/colleges/create/', CollegeList.as_view(), name='college'),
-    # path('collegetkr/user/<username>/', views.profile, name='profile'),
     path('collegetkr/apps/', ApplicationList.as_view(), name='apps_index'),
     # path('collegetkr/apps/<int:college_id>', views.apps_detail, name='app_detail'),
     # path('collegetkr/apps/<int:college_id>/create/', views.AppCreate.as_view(), name='app_create'),
     # path('collegetkr/apps/<int:pk>/update/', views.AppUpdate.as_view(), name='app_update'),
     # path('collegetkr/apps/<int:pk>/delete/', views.AppDelete.as_view(), name='app_delete'),
-    # path('collegetkr/tasks/', views.task_index, name='task_index'),
+    path('collegetkr/tasks/', TaskList.as_view(), name='task_index'),
     # path('collegetkr/tasks/<int:app_id>', views.app_task_index, name='app_task_index'),
     # path('collegetkr/tasks/<int:app_id>/create', views.app_task_create, name='create_task'),
     # path('collegetkr/tasks/<int:pk>/update/', views.TaskUpdate.as_view(), name='task_update'),

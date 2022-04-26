@@ -7,6 +7,8 @@ from django.shortcuts import get_object_or_404
 from ..models.college import College as CollegeModel
 from ..serializers import CollegeSerializer
 
+
+# Retrieve a list of colleges.
 class CollegeList(generics.ListCreateAPIView):
     
     #permission_classes=(IsAuthenticated,)
@@ -30,3 +32,18 @@ class CollegeList(generics.ListCreateAPIView):
             return Response({ 'college': college.data }, status=status.HTTP_201_CREATED)
         # If the data is not valid, return a response with the errors
         return Response(college.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Show a College via pk
+class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
+    #permission_classes=(IsAuthenticated,)
+    def get(self, request, pk):
+        """Show request"""
+        # Locate the college to show
+        college = get_object_or_404(CollegeModel, pk=pk)
+        # Only want to show owned mangos?
+        # if request.user != mango.owner:
+        #     raise PermissionDenied('Unauthorized, you do not own this mango')
+
+        # Run the data through the serializer so it's formatted
+        data = CollegeSerializer(college).data
+        return Response({ 'college': data })
