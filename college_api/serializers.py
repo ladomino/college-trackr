@@ -17,7 +17,7 @@ class TrackCollegeSerializer(serializers.ModelSerializer):
         fields = ('id', 'status', 'college', 'owner')
 
 class CollegeSerializer(serializers.ModelSerializer):
-    #track_colleges = TrackCollegeSerializer()
+    #track_colleges = TrackCollegeSpecificSerializer(many=True)
     class Meta:
         model = College
         fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
@@ -37,11 +37,12 @@ class CollegeApplicationSerializer(serializers.ModelSerializer):
 class ApplicationTaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApplicationTask
-        fields = ('id', 'importance', 'due_date', 'complete', 'working_on')
+        fields = ('id', 'importance', 'due_date', 'complete', 'working_on', 'application', 'task')
 
 class ApplicationSerializer(serializers.ModelSerializer):
     college_applications = CollegeApplicationSerializer(many=True)
-    application_tasks = ApplicationTaskSerializer(many=True)
+    #application_tasks = ApplicationTaskSerializer(many=True) only for when applicationtaskserializer
+    # did not have the columns.
     class Meta:
         model = Application
         fields = ('id', 'name', 'link', 'created', 'owner', 'college_applications', 'application_tasks')

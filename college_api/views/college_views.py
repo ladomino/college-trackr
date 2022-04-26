@@ -11,7 +11,7 @@ from ..serializers import CollegeSerializer
 # Retrieve a list of colleges.
 class CollegeList(generics.ListCreateAPIView):
     
-    #permission_classes=(IsAuthenticated,)
+    permission_classes=(IsAuthenticated,)
     serializer_class = CollegeSerializer
 
     def get(self, request):

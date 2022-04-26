@@ -15,7 +15,9 @@ class TrackCollegeList(generics.ListCreateAPIView):
 
     def get(self, request):
         trackcolleges = TrackCollegeModel.objects.filter(owner=request.user.id)
+        print(trackcolleges)
         data = TrackCollegeSerializer(trackcolleges, many=True).data
+        print(data)
         return Response({ 'trackcolleges': data })
 
     def post(self, request, college_id):
