@@ -2,7 +2,7 @@ from django.urls import path
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
 from .views.college_views import CollegeList, CollegeDetail
 from .views.application_views import ApplicationList
-from .views.task_views import TaskList
+from .views.task_views import TaskList, TaskDetail
 
 urlpatterns = [
     # path('collegetkr/', views.index, name='index'),
@@ -19,8 +19,7 @@ urlpatterns = [
     path('collegetkr/tasks/', TaskList.as_view(), name='task_index'),
     # path('collegetkr/tasks/<int:app_id>', views.app_task_index, name='app_task_index'),
     # path('collegetkr/tasks/<int:app_id>/create', views.app_task_create, name='create_task'),
-    # path('collegetkr/tasks/<int:pk>/update/', views.TaskUpdate.as_view(), name='task_update'),
-    # path('collegetkr/tasks/<int:pk>/update/', views.TaksDelete.as_view(), name='task_delete'),
+    path('collegetkr/tasks/<int:pk>/', TaskDetail.as_view(), name='task_detail'),
     # path('collegetkr/tasks/<int:app_id>/assign/<int:task_id>', views.assign_task, name='assign_task'),
     # path('collegetkr/tasks/<int:app_id>/remove/<int:task_id>', views.remove_task, name='remove_task'),
   	# Restful routing

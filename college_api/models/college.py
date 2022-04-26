@@ -13,9 +13,9 @@ class College(models.Model):
   city = models.CharField(max_length=100)
   state = models.CharField(max_length=32)
   image = models.URLField(blank=True)
-  early_decision = models.DateField(blank=True)
-  early_action = models.DateField(blank=True)
-  regular_decision = models.DateField(blank=True)
+  early_decision = models.DateField(null=True, blank=True)
+  early_action = models.DateField(null=True, blank=True)
+  regular_decision = models.DateField(null= True, blank=True)
   app_home_link = models.URLField(blank=True)
 
   track_colleges = models.ManyToManyField(
