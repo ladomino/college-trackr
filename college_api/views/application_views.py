@@ -29,6 +29,7 @@ class ApplicationList(generics.ListCreateAPIView):
         request.data['application']['owner'] = request.user.id
         # Serialize/create application
         application = ApplicationSerializer(data=request.data['application'])
+        
         # If the application data is valid according to our serializer...
         if application.is_valid():
             # Save the created application & send a response

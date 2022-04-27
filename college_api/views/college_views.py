@@ -5,7 +5,7 @@ from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 
 from ..models.college import College as CollegeModel
-from ..serializers import CollegeSerializer
+from ..serializers import CollegeSerializer, CollegeReadSerializer
 
 
 # Retrieve a list of colleges.
@@ -16,7 +16,7 @@ class CollegeList(generics.ListCreateAPIView):
 
     def get(self, request):
         colleges = CollegeModel.objects.all()
-        data = CollegeSerializer(colleges, many=True).data
+        data = CollegeReadSerializer(colleges, many=True).data
         return Response({ 'colleges': data })
 
     def post(self, request):
@@ -45,5 +45,5 @@ class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
         #     raise PermissionDenied('Unauthorized, you do not own this college')
 
         # Run the data through the serializer so it's formatted
-        data = CollegeSerializer(college).data
+        data = CollegeReadSerializer(college).data
         return Response({ 'college': data })
