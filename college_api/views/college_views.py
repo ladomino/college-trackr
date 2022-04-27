@@ -17,7 +17,9 @@ class CollegeList(generics.ListCreateAPIView):
 
     def get(self, request):
         colleges = CollegeModel.objects.all()
+        print(colleges)
         data = CollegeReadSerializer(colleges, many=True).data
+        print(data)
         return Response({ 'colleges': data })
 
     def post(self, request):
