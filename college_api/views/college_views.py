@@ -40,10 +40,13 @@ class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
         """Show request"""
         # Locate the college to show
         college = get_object_or_404(CollegeModel, pk=pk)
+        print(college.track_colleges.all().values())
+
         # Only want to show owned college?
         # if request.user != college.owner:
         #     raise PermissionDenied('Unauthorized, you do not own this college')
 
         # Run the data through the serializer so it's formatted
         data = CollegeReadSerializer(college).data
+        print(data)
         return Response({ 'college': data })

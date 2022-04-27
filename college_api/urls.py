@@ -23,6 +23,7 @@ urlpatterns = [
     path('collegetkr/collegetrack/', TrackCollegeList.as_view(), name='college_track_show'),
     path('collegetkr/collegetrack/<int:pk>/', TrackCollegeDetail.as_view(), name='college_track_detail'),
     path('collegetkr/apps/', ApplicationList.as_view(), name='apps_index'),
+    
     path('collegetkr/apps/<int:college_id>/assign/<int:app_id>/', CollegeApplicationList.as_view(), name='collegeapp_assign_task'),
     path('collegetkr/collegeapps/<int:pk>/update/', CollegeApplicationDetail.as_view(), name='collegeapp_update'),
     path('collegetkr/collegeapps/<int:pk>/delete/', CollegeApplicationDetail.as_view(), name='colllegeapp_delete'),

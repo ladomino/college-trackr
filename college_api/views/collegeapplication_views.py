@@ -5,7 +5,7 @@ from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 
 from ..models.collegeapplication import CollegeApplication as CollegeApplicationModel
-from ..serializers import CollegeApplicationSerializer
+from ..serializers import CollegeApplicationSerializer, CollegeApplicationReadSerializer
 
 # Create your views here.
 class CollegeApplicationList(generics.ListCreateAPIView):
@@ -27,7 +27,7 @@ class CollegeApplicationList(generics.ListCreateAPIView):
         """Create request"""
         # Add user to request data object
         request.data['collegeapplication']['college'] = college_id
-        request.data['collegeapplication']['application'] = application_id
+        request.data['collegeapplication']['application'] = app_id
       
         # Serialize/create application
         collegeapplication = CollegeApplicationSerializer(data=request.data['collegeapplication'])
