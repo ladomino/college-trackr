@@ -17,13 +17,17 @@ class TrackCollegeSerializer(serializers.ModelSerializer):
         fields = ('id', 'status')
 
 class CollegeReadSerializer(serializers.ModelSerializer):
-    track_colleges = TrackCollegeSerializer(many=True)
+    track_colleges = serializers.PrimaryKeyRelatedField(queryset=TrackCollege.objects.all(),many=True)
+    #track_colleges = TrackCollegeSerializer(many=True)
     class Meta:
         model = College
-        fields = '__all__'
+        fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
+        'app_home_link', 'track_colleges')
+        # fields = '__all__'
 
 class CollegeSerializer(serializers.ModelSerializer):
-    track_colleges = TrackCollegeSerializer(many=True)
+    track_colleges = serializers.PrimaryKeyRelatedField(queryset=TrackCollege.objects.all(),many=True)
+    #track_colleges = TrackCollegeSerializer(many=True)
     class Meta:
         model = College
         fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
@@ -38,7 +42,7 @@ class TaskSerializer(serializers.ModelSerializer):
 class ApplicationTaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApplicationTask
-        fields = ('id', 'importance', 'due_date', 'complete', 'working_on', 'application', 'task')
+        fields = ('id', 'importance', 'due_date', 'complete', 'working_on')
 
 
 class CollegeApplicationSerializer(serializers.ModelSerializer):

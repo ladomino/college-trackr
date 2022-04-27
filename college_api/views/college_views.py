@@ -5,7 +5,8 @@ from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 
 from ..models.college import College as CollegeModel
-from ..serializers import CollegeSerializer, CollegeReadSerializer
+from ..models.trackcollege import TrackCollege as TrackCollegeModel
+from ..serializers import CollegeSerializer, CollegeReadSerializer, TrackCollegeSerializer
 
 
 # Retrieve a list of colleges.
@@ -49,4 +50,7 @@ class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
         # Run the data through the serializer so it's formatted
         data = CollegeReadSerializer(college).data
         print(data)
+
         return Response({ 'college': data })
+
+
