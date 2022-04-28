@@ -59,4 +59,18 @@ class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
 
         return Response({ 'college': data })
 
+class CollegeUnTrackList(generics.ListCreateAPIView):
+    
+    permission_classes=(IsAuthenticated,)
+    serializer_class = CollegeSerializer
 
+    def get(self, request):
+        # colleges = CollegeModel.objects.all()
+
+        # This will get all colleges nottracked by a user
+        colleges = CollegeModel.objects.exclude(track_colleges = request.user.id)
+        print(colleges)
+
+        data = CollegeReadSerializer(colleges, many=True).data
+        print(data)
+        return Response({ 'colleges': data })

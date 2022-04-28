@@ -1,6 +1,6 @@
 from django.urls import path
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
-from .views.college_views import CollegeList, CollegeDetail
+from .views.college_views import CollegeList, CollegeDetail, CollegeUnTrackList
 from .views.application_views import ApplicationList, ApplicationDetail
 from .views.task_views import TaskList, TaskDetail
 from .views.trackcollege_views import TrackCollegeList, TrackCollegeDetail
@@ -13,6 +13,8 @@ urlpatterns = [
     # path('collegetkr/about/', views.about, name='about'),
 
     path('collegetkr/colleges/', CollegeList.as_view(), name='college'),
+    path('collegetkr/colleges/all/', CollegeUnTrackList.as_view(), name="collegestotrack_show"),
+
     # college details button
     path('collegetkr/colleges/<int:pk>/', CollegeDetail.as_view(), name='college_detail'),
     # create button
