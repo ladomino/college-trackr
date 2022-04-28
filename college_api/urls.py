@@ -24,10 +24,13 @@ urlpatterns = [
     # track your colleges
     path('collegetkr/collegetrack/', TrackCollegeList.as_view(), name='college_track_show'),
     path('collegetkr/collegetrack/<int:pk>/', TrackCollegeDetail.as_view(), name='college_track_detail'),
-    
+
+    path('collegetkr/collegeapps/<int:app_id>/all/', CollegeApplicationList.as_view(), name='collegeapp_index'),
+    path('collegetkr/collegeapps/<int:pk>/', CollegeApplicationDetail.as_view(), name='collegeapp_detail'),    
     path('collegetkr/apps/<int:college_id>/assign/<int:app_id>/', CollegeApplicationList.as_view(), name='collegeapp_assign_task'),
     path('collegetkr/collegeapps/<int:pk>/update/', CollegeApplicationDetail.as_view(), name='collegeapp_update'),
     path('collegetkr/collegeapps/<int:pk>/delete/', CollegeApplicationDetail.as_view(), name='colllegeapp_delete'),
+
 
     # path('collegetkr/apps/<int:college_id>', views.apps_detail, name='app_detail'),
 
@@ -42,6 +45,7 @@ urlpatterns = [
     path('collegetkr/tasks/<int:app_id>/', ApplicationTaskList.as_view(), name='app_task_index'),
     path('collegetkr/tasks/create/', TaskList.as_view(), name='create_task'),
     path('collegetkr/tasks/<int:pk>/', TaskDetail.as_view(), name='task_detail'),
+
     path('collegetkr/apptasks/<int:app_id>/', ApplicationTaskList.as_view(), name='app_tasks_show'),
     #path('collegetkr/apptasks/', ApplicationTaskList.as_view(), name='app_tasks_show'),
     path('collegetkr/apptasks/<int:app_id>/assign/<int:task_id>/', ApplicationTaskList.as_view(), name='assign_task'),
