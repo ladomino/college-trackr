@@ -19,6 +19,7 @@ class TrackCollegeSerializer(serializers.ModelSerializer):
 class CollegeReadSerializer(serializers.ModelSerializer):
     track_colleges = serializers.PrimaryKeyRelatedField(queryset=TrackCollege.objects.all(),many=True)
     #track_colleges = TrackCollegeSerializer(many=True)
+    print("track colleges: ", track_colleges)
     class Meta:
         model = College
         fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 

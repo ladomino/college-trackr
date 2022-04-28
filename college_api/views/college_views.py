@@ -16,8 +16,12 @@ class CollegeList(generics.ListCreateAPIView):
     serializer_class = CollegeSerializer
 
     def get(self, request):
-        colleges = CollegeModel.objects.all()
+        # colleges = CollegeModel.objects.all()
+
+        # This will get all colleges tracked by a user
+        colleges = CollegeModel.objects.filter(track_colleges=request.user.id)
         print(colleges)
+
         data = CollegeReadSerializer(colleges, many=True).data
         print(data)
         return Response({ 'colleges': data })
