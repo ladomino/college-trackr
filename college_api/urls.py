@@ -35,7 +35,7 @@ urlpatterns = [
     # applications
     path('collegetkr/apps/', ApplicationList.as_view(), name='apps_index'),
     path('collegetkr/apps/<int:pk>/', ApplicationDetail.as_view(), name='app_detail'),
-    path('collegetkr/apps/<int:college_id>/create/', ApplicationList.as_view(), name='app_create'),
+    path('collegetkr/apps/create/', ApplicationList.as_view(), name='app_create'),
     path('collegetkr/apps/<int:pk>/update/', ApplicationDetail.as_view(), name='app_update'),
     path('collegetkr/apps/<int:pk>/delete/', ApplicationDetail.as_view(), name='app_delete'),
 

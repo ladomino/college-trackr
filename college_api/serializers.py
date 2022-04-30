@@ -14,11 +14,10 @@ from .models.user import User
 class TrackCollegeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrackCollege
-        fields = ('id', 'status')
+        fields = ('id', 'status', 'owner', 'college')
 
 class CollegeReadSerializer(serializers.ModelSerializer):
     track_colleges = serializers.PrimaryKeyRelatedField(queryset=TrackCollege.objects.all(),many=True)
-    #track_colleges = TrackCollegeSerializer(many=True)
     print("track colleges: ", track_colleges)
     class Meta:
         model = College
@@ -26,13 +25,12 @@ class CollegeReadSerializer(serializers.ModelSerializer):
         'app_home_link', 'track_colleges')
         # fields = '__all__'
 
+# Creating a college does not require tracking the college
 class CollegeSerializer(serializers.ModelSerializer):
-    track_colleges = serializers.PrimaryKeyRelatedField(queryset=TrackCollege.objects.all(),many=True)
-    #track_colleges = TrackCollegeSerializer(many=True)
     class Meta:
         model = College
         fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
-        'app_home_link', 'track_colleges')
+        'app_home_link')
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
@@ -51,16 +49,21 @@ class CollegeApplicationSerializer(serializers.ModelSerializer):
         model = CollegeApplication
         fields = ('id', 'date_submitted', 'in_progress', 'hold', 'early_decision', 'early_action', 'regular_decision')       
 
-class ApplicationSerializer(serializers.ModelSerializer):
-    college_applications = CollegeApplicationSerializer(many=True)
-    application_tasks = ApplicationTaskSerializer(many=True) 
+class ApplicationReadSerializer(serializers.ModelSerializer):
+    #college_applications = CollegeApplicationSerializer(many=True)
+    #application_tasks = ApplicationTaskSerializer(many=True) 
     # only for when applicationtaskserializer
     # did not have the columns.
     class Meta:
         model = Application
-        fields = ('id', 'name', 'link', 'created', 'owner', 'college_applications', 'application_tasks')
-        read_only_fields = ('college_applications', 'application_tasks')
+        fields = ('id', 'name', 'link', 'created', 'owner')
 
+class ApplicationSerializer(serializers.ModelSerializer):
+    # only for when applicationtaskserializer
+    # did not have the columns.
+    class Meta:
+        model = Application
+        fields = ('id', 'name', 'link', 'owner')
 
 class ApplicationTaskReadSerializer(serializers.ModelSerializer):
     task = TaskSerializer()
@@ -121,4 +124,3 @@ class ChangePasswordSerializer(serializers.Serializer):
     model = get_user_model()
     old = serializers.CharField(required=True)
     new = serializers.CharField(required=True)
-

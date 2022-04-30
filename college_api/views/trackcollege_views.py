@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.edit import UpdateView, DeleteView
 
 from ..models.trackcollege import TrackCollege as TrackCollegeModel
+from ..serializers import CollegeReadSerializer
 from ..serializers import TrackCollegeSerializer
 
 class TrackCollegeList(generics.ListCreateAPIView):
@@ -17,16 +18,18 @@ class TrackCollegeList(generics.ListCreateAPIView):
         trackcolleges = TrackCollegeModel.objects.filter(owner=request.user.id)
         print(trackcolleges)
         data = TrackCollegeSerializer(trackcolleges, many=True).data
+
         print(data)
         return Response({ 'trackcolleges': data })
 
     def post(self, request, college_id):
         # """Create request"""
         # Add user to request data object
-
         request.data['trackcollege']['owner'] = request.user.id
         request.data['trackcollege']['college'] = college_id
 
+        print(request.data)
+        
         # # Serialize/create task
         trackcollege = TrackCollegeSerializer(data=request.data['trackcollege'])
         # If the college data is valid according to our serializer...

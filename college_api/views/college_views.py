@@ -20,7 +20,6 @@ class CollegeList(generics.ListCreateAPIView):
 
         # This will get all colleges tracked by a user
         colleges = CollegeModel.objects.filter(track_colleges=request.user.id)
-        print(colleges)
 
         data = CollegeReadSerializer(colleges, many=True).data
         print(data)
@@ -54,7 +53,7 @@ class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
         #     raise PermissionDenied('Unauthorized, you do not own this college')
 
         # Run the data through the serializer so it's formatted
-        data = CollegeReadSerializer(college).data
+        data = CollegSerializer(college).data
         print(data)
 
         return Response({ 'college': data })
@@ -71,6 +70,6 @@ class CollegeUnTrackList(generics.ListCreateAPIView):
         colleges = CollegeModel.objects.exclude(track_colleges = request.user.id)
         print(colleges)
 
-        data = CollegeReadSerializer(colleges, many=True).data
+        data = CollegeSerializer(colleges, many=True).data
         print(data)
         return Response({ 'colleges': data })

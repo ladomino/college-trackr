@@ -23,7 +23,7 @@ class ApplicationList(generics.ListCreateAPIView):
         data = ApplicationSerializer(applications, many=True).data
         return Response({ 'applications': data })
 
-    def post(self, request, college_id):
+    def post(self, request):
         """Create request"""
         # Add user to request data object
         request.data['application']['owner'] = request.user.id
