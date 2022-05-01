@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404
 from ..models.application import Application as ApplicationModel
 from ..serializers import ApplicationSerializer
 
+
 # Create your views here.
 class ApplicationList(generics.ListCreateAPIView):
     permission_classes=(IsAuthenticated,)
