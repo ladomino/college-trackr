@@ -73,6 +73,7 @@ class ApplicationTaskReadSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CollegeApplicationReadSerializer(serializers.ModelSerializer):
+    #application = serializers.PrimaryKeyRelatedField(queryset=Application.objects.all(),many=True)
     college = CollegeSerializer()
     application = ApplicationSerializer()
     class Meta:

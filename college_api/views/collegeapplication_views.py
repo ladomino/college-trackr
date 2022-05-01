@@ -50,7 +50,7 @@ class CollegeApplicationDetail(generics.RetrieveUpdateDestroyAPIView):
         #     raise PermissionDenied('Unauthorized, you do not own this application')
 
         # Run the data through the serializer so it's formatted
-        data = CollegeApplicationSerializer(collegeapplication).data
+        data = CollegeApplicationReadSerializer(collegeapplication).data
         return Response({ 'collegeapplication': data })
 
     def delete(self, request, pk):
