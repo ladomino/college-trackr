@@ -5,7 +5,7 @@ from .views.application_views import ApplicationList, ApplicationDetail
 from .views.task_views import TaskList, TaskDetail
 from .views.trackcollege_views import TrackCollegeList, TrackCollegeDetail
 from .views.applicationtask_views import ApplicationTaskList, ApplicationTaskDetail
-from .views.collegeapplication_views import CollegeApplicationList, CollegeApplicationDetail
+from .views.collegeapplication_views import CollegeApplicationList, CollegeApplicationOneList, CollegeApplicationDetail
 
 
 urlpatterns = [
@@ -26,7 +26,8 @@ urlpatterns = [
     path('collegetkr/collegetrack/<int:pk>/', TrackCollegeDetail.as_view(), name='college_track_detail'),
 
     # manytomany collegeToapplication routes
-    path('collegetkr/collegeapps/<int:app_id>/all/', CollegeApplicationList.as_view(), name='collegeapp_index'),
+    path('collegetkr/collegeapps/all/<int:app_id>/', CollegeApplicationList.as_view(), name='collegeapp_index'),
+    path('collegetkr/collegeapps/one/<int:app_id>/', CollegeApplicationOneList.as_view(), name='collegeapp_one'),
     path('collegetkr/collegeapps/<int:pk>/', CollegeApplicationDetail.as_view(), name='collegeapp_detail'),    
     path('collegetkr/collegeapps/<int:college_id>/assign/<int:app_id>/', CollegeApplicationList.as_view(), name='collegeapp_assign_task'),
     path('collegetkr/collegeapps/<int:pk>/update/', CollegeApplicationDetail.as_view(), name='collegeapp_update'),

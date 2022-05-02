@@ -7,6 +7,24 @@ from django.shortcuts import get_object_or_404
 from ..models.collegeapplication import CollegeApplication as CollegeApplicationModel
 from ..serializers import CollegeApplicationSerializer, CollegeApplicationReadSerializer
 
+
+# Create your views here.
+class CollegeApplicationOneList(generics.ListCreateAPIView):
+    permission_classes=(IsAuthenticated,)
+    serializer_class = CollegeApplicationSerializer
+
+    def get(self, request, app_id):
+        """Index request"""
+        # Get all the applications:
+        # applications = Application.objects.all()
+        # Filter the applications by owner, so you can only see your owned 
+        # applications
+        collegeapplication = CollegeApplicationModel.objects.filter(application=app_id)
+        # Run the data through the serializer
+        data = CollegeApplicationReadSerializer(collegeapplication, many=True).data
+        print("Helloooooo", data)
+        return Response({ 'collegeapplication': data[0] })
+
 # Create your views here.
 class CollegeApplicationList(generics.ListCreateAPIView):
     permission_classes=(IsAuthenticated,)
@@ -20,7 +38,7 @@ class CollegeApplicationList(generics.ListCreateAPIView):
         # applications
         collegeapplications = CollegeApplicationModel.objects.filter(application=app_id)
         # Run the data through the serializer
-        data = CollegeApplicationSerializer(collegeapplications, many=True).data
+        data = CollegeApplicationReadSerializer(collegeapplications, many=True).data
         return Response({ 'collegeapplications': data })
 
     def post(self, request, college_id, app_id):

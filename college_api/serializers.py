@@ -17,13 +17,13 @@ class TrackCollegeSerializer(serializers.ModelSerializer):
         fields = ('id', 'status', 'owner', 'college')
 
 class CollegeReadSerializer(serializers.ModelSerializer):
-    track_colleges = serializers.PrimaryKeyRelatedField(queryset=TrackCollege.objects.all(),many=True)
-    print("track colleges: ", track_colleges)
+    #track_colleges = serializers.PrimaryKeyRelatedField(queryset=TrackCollege.objects.all(),many=True)
+    # print("track colleges: ", track_colleges)
     class Meta:
         model = College
-        fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
-        'app_home_link', 'track_colleges')
-        # fields = '__all__'
+        # fields = ('id', 'name', 'city', 'state', 'image', 'early_decision', 'early_action', 'regular_decision', 
+        # 'app_home_link', 'track_colleges')
+        fields = '__all__'
 
 # Creating a college does not require tracking the college
 class CollegeSerializer(serializers.ModelSerializer):
@@ -72,13 +72,7 @@ class ApplicationTaskReadSerializer(serializers.ModelSerializer):
         model = ApplicationTask
         fields = '__all__'
 
-class CollegeApplicationReadSerializer(serializers.ModelSerializer):
-    #application = serializers.PrimaryKeyRelatedField(queryset=Application.objects.all(),many=True)
-    college = CollegeSerializer()
-    application = ApplicationSerializer()
-    class Meta:
-        model = CollegeApplication
-        fields = '__all__'
+
 
 
 class UserSerializer(serializers.ModelSerializer):    
@@ -120,6 +114,14 @@ class UserRegisterSerializer(serializers.Serializer):
             raise serializers.ValidationError('Please make sure your passwords match.')
         # if all is well, return the data
         return data
+
+class CollegeApplicationReadSerializer(serializers.ModelSerializer):
+    #application = serializers.PrimaryKeyRelatedField(queryset=Application.objects.all(),many=True)
+    college = CollegeSerializer()
+    application = ApplicationSerializer()
+    class Meta:
+        model = CollegeApplication
+        fields = '__all__'
 
 class ChangePasswordSerializer(serializers.Serializer):
     model = get_user_model()
